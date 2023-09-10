@@ -6,4 +6,10 @@ pub struct Cli {
     pub video: bool,
     #[clap(short, long)]
     pub music: bool,
+
+    #[clap(short, long)]
+    pub playlist: bool,
+
+    #[clap(short, long)]
+    pub path: Option<String>,
 }
