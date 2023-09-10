@@ -2,6 +2,10 @@
 
 this project downloads videos and audio from the links that come from the clipboard
 
+## dependencies
+
+- yt-dlp
+
 ## usage
 
 youtube_downloader --music
