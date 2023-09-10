@@ -7,7 +7,7 @@ pub struct Cli {
     #[clap(short, long)]
     pub music: bool,
 
-    #[clap(short, long)]
+    #[clap(short='l', long)]
     pub playlist: bool,
 
     #[clap(short, long)]
