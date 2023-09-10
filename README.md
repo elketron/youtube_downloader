@@ -5,6 +5,7 @@ this project downloads videos and audio from the links that come from the clipbo
 ## dependencies
 
 - yt-dlp
+- wl-paste
 
 ## usage
 
