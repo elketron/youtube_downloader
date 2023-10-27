@@ -13,6 +13,6 @@ pub struct Cli {
     #[clap(short, long)]
     pub path: Option<String>,
 
-    #[clap(short, long)]
+    #[clap(short = 'd', long)]
     pub mpv: bool,
 }
