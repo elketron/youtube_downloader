@@ -37,8 +37,10 @@ fn main() {
         dir = format!("~/Videos/{}", today.format("%Y-%m-%d"));
     } else if args.music {
         dir = format!("~/Music/{}", today.format("%Y-%m-%d"));
+    } else if args.mpv {
+        dir = "".to_string();
     } else {
-        println!("Please specify either --video or --music");
+        println!("Please specify a download type");
         return;
     }
 
