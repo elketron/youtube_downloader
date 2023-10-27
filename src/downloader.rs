@@ -46,3 +46,14 @@ pub fn download_playlist(url: &str, output: &str) {
 
     println!("{}", output);
 }
+
+pub fn open_mpv(url: &str) {
+    let command = Command::new("mpv")
+        .arg(url)
+        .output()
+        .expect("failed to execute process");
+
+    let output = String::from_utf8_lossy(&command.stdout);
+
+    println!("{}", output);
+}

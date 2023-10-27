@@ -46,7 +46,7 @@ fn main() {
         dir = path;
     }
 
-    if !check_if_dir_exists(&dir) {
+    if !check_if_dir_exists(&dir) && !args.mpv {
         let command = Command::new("mkdir")
             .arg("-p")
             .arg(&dir)
@@ -78,18 +78,25 @@ fn main() {
 
     let consumer = std::thread::spawn(move || loop {
         let url = receiver.recv().unwrap();
-        
+
         let output: String;
         if args.playlist {
-            output = format!("{}/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s", dir);
-        } else {
+            output = format!(
+                "{}/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s",
+                dir
+            );
+        } else if args.music {
             output = format!("{}/%(title)s.%(ext)s", dir);
+        } else {
+            output = "".to_string();
         }
 
         if args.video {
             downloader::download_youtube_video(&url, &output);
         } else if args.music {
             downloader::download_youtube_audio(&url, &output);
+        } else if args.mpv {
+            downloader::open_mpv(&url);
         }
 
         let remaining_items = remaining.load(Ordering::Relaxed);
